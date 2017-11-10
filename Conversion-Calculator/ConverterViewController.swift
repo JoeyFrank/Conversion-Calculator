@@ -19,6 +19,16 @@ class ConverterViewController: UIViewController {
     @IBOutlet weak var inputDisplay: UITextField!
     
     @IBAction func convert(_ sender: UIButton) {
+        let alert = UIAlertController(title:"Choose Converter", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        for converter in converters{
+            alert.addAction(UIAlertAction(title: converter.label, style: UIAlertActionStyle.default, handler:{
+                 (alertAction) -> Void in
+                
+                self.outputDisplay.text = converter.outputUnit
+                self.inputDisplay.text = converter.inputUnit
+            }))
+        }
+        self.present(alert, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
